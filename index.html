@@ -350,9 +350,9 @@
 
 <body>
 
-  <!-- AUTO PLAY SONG -->
+  <!-- MUSIC -->
 
-  <audio autoplay loop>
+  <audio id="bgMusic" loop>
     <source src="moon.mpeg" type="audio/mpeg">
   </audio>
 
@@ -457,6 +457,22 @@
 
   <script>
 
+    // AUTO PLAY MUSIC
+
+    window.addEventListener("load", () => {
+
+      const music = document.getElementById("bgMusic");
+
+      music.play().catch(() => {
+
+        document.body.addEventListener("click", () => {
+          music.play();
+        }, { once:true });
+
+      });
+
+    });
+
     // FLOATING HEARTS
 
     const floating = document.getElementById("floating");
@@ -533,7 +549,7 @@
 
     ];
 
-    // FUNCTION
+    // HEART CLICK FUNCTION
 
     function showMessage(index){
 
